@@ -44,6 +44,7 @@ body::before {
     100% { transform: rotate(-5deg) translateX(-50px) translateY(-1000px); }
 }
 
+/* ===== NAVBAR ===== */
 .navbar {
     padding: 1rem;
     position: fixed;
@@ -107,6 +108,7 @@ body::before {
     left: 0;
 }
 
+/* ===== SEÇÕES GERAIS ===== */
 .section {
     min-height: 100vh;
     padding: 6rem 2rem 2rem;
@@ -121,6 +123,7 @@ body::before {
     margin: 0 auto;
 }
 
+/* ===== SEÇÃO HOME ===== */
 .cyber-title {
     font-family: 'Orbitron', sans-serif;
     font-size: clamp(2.5rem, 8vw, 5rem);
@@ -140,6 +143,7 @@ body::before {
     75% { text-shadow: -3px 3px 0 var(--neon-pink), 3px -3px 0 var(--neon-cyan); }
 }
 
+/* ===== SEÇÃO HABILIDADES ===== */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -223,6 +227,7 @@ body::before {
     transform: rotate(90deg);
 }
 
+/* ===== SEÇÃO EXPERIÊNCIA ===== */
 .experience-item {
     background: rgba(10, 10, 20, 0.7);
     border: 1px solid rgba(0, 255, 255, 0.3);
@@ -301,6 +306,29 @@ body::before {
     box-shadow: 0 0 10px rgba(240, 0, 240, 0.3);
 }
 
+/* ===== SEÇÃO CONTATO ===== */
+#contact.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+#contact .content-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+#contact .cyber-button {
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto 0;
+    display: block;
+}
+
+/* ===== TERMINAL MODAL ===== */
 .terminal-modal {
     display: none;
     position: fixed;
@@ -378,6 +406,7 @@ body::before {
     transition: width 0.3s ease;
 }
 
+/* ===== BOTÃO CYBER ===== */
 .cyber-button {
     padding: 1rem 2rem;
     background: transparent;
@@ -402,47 +431,7 @@ body::before {
     box-shadow: 0 0 15px var(--neon-cyan);
 }
 
-.contact-sheet {
-    padding: 1rem;
-    border: 1px solid var(--neon-pink);
-    margin-bottom: 1rem;
-}
-
-.contact-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem 0;
-    border-bottom: 1px dashed rgba(0, 255, 255, 0.2);
-}
-
-.contact-buttons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-}
-
-.contact-button {
-    padding: 0.8rem;
-    border: 1px solid var(--neon-cyan);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-}
-
-.contact-button:hover {
-    background: rgba(0, 255, 255, 0.1);
-    transform: translateY(-2px);
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
+/* ===== RODAPÉ ===== */
 .footer {
     padding: 2rem;
     background: var(--darker-bg);
@@ -463,6 +452,7 @@ body::before {
     justify-content: center;
 }
 
+/* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
     .nav-links {
         gap: 1rem;
@@ -484,23 +474,15 @@ body::before {
     .company-icon {
         margin-bottom: 1rem;
     }
-    
-    .contact-buttons {
-        grid-template-columns: 1fr;
-    }
 
-    #contact .content-container {
-        min-height: 70vh;
-        padding: 2rem 1rem;
-    }
-
-    .contact-container {
-        padding: 1rem;
-    }
-
-    .cyber-button {
+    #contact .cyber-button {
         max-width: 300px;
         font-size: 0.9rem;
         padding: 1rem;
     }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
