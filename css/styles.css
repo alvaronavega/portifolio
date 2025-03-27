@@ -44,7 +44,6 @@ body::before {
     100% { transform: rotate(-5deg) translateX(-50px) translateY(-1000px); }
 }
 
-/* ===== NAVBAR ===== */
 .navbar {
     padding: 1rem;
     position: fixed;
@@ -108,7 +107,6 @@ body::before {
     left: 0;
 }
 
-/* ===== SEÇÕES GERAIS ===== */
 .section {
     min-height: 100vh;
     padding: 6rem 2rem 2rem;
@@ -123,7 +121,6 @@ body::before {
     margin: 0 auto;
 }
 
-/* ===== SEÇÃO HOME ===== */
 .cyber-title {
     font-family: 'Orbitron', sans-serif;
     font-size: clamp(2.5rem, 8vw, 5rem);
@@ -143,7 +140,6 @@ body::before {
     75% { text-shadow: -3px 3px 0 var(--neon-pink), 3px -3px 0 var(--neon-cyan); }
 }
 
-/* ===== SEÇÃO HABILIDADES ===== */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -227,7 +223,6 @@ body::before {
     transform: rotate(90deg);
 }
 
-/* ===== SEÇÃO EXPERIÊNCIA ===== */
 .experience-item {
     background: rgba(10, 10, 20, 0.7);
     border: 1px solid rgba(0, 255, 255, 0.3);
@@ -306,7 +301,6 @@ body::before {
     box-shadow: 0 0 10px rgba(240, 0, 240, 0.3);
 }
 
-/* ===== SEÇÃO CONTATO ===== */
 #contact.section {
     display: flex;
     justify-content: center;
@@ -328,7 +322,7 @@ body::before {
     display: block;
 }
 
-/* ===== TERMINAL MODAL ===== */
+/* ===== TERMINAL CYBERPUNK ATUALIZADO ===== */
 .terminal-modal {
     display: none;
     position: fixed;
@@ -336,7 +330,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(0, 0, 0, 0.97);
     z-index: 2000;
     align-items: center;
     justify-content: center;
@@ -346,11 +340,10 @@ body::before {
 .terminal-content {
     width: 100%;
     max-width: 700px;
-    height: 80vh;
-    max-height: 600px;
+    height: 70vh;
     background-color: var(--darker-bg);
     border: 1px solid var(--neon-cyan);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
     font-family: 'Roboto Mono', monospace;
     color: var(--neon-cyan);
     border-radius: 4px;
@@ -361,52 +354,121 @@ body::before {
 
 .terminal-header {
     padding: 0.8rem 1rem;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     border-bottom: 1px solid var(--neon-cyan);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 5px var(--neon-cyan);
 }
 
 .terminal-body {
     flex: 1;
     display: flex;
     flex-direction: column;
+    padding: 0.5rem;
+    height: calc(100% - 40px);
 }
 
 .terminal-output {
     flex: 1;
-    overflow-y: auto;
-    padding: 1rem;
+    overflow-y: hidden;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    scrollbar-width: none;
+}
+
+.terminal-output::-webkit-scrollbar {
+    display: none;
+}
+
+.terminal-line {
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+    animation: glitch-text 0.5s infinite alternate;
+    white-space: pre-wrap;
+}
+
+@keyframes glitch-text {
+    0% { text-shadow: 0.5px 0.5px 0 var(--neon-pink), -0.5px -0.5px 0 var(--neon-cyan); transform: translate(0); }
+    20% { transform: translate(-1px, 1px); }
+    40% { transform: translate(1px, -1px); }
+    60% { text-shadow: 1px 1px 0 var(--neon-pink), -1px -1px 0 var(--neon-cyan); transform: translate(0); }
+    80% { transform: translate(1px, 1px); }
+    100% { text-shadow: 0.5px -0.5px 0 var(--neon-pink), -0.5px 0.5px 0 var(--neon-cyan); transform: translate(-1px); }
 }
 
 .terminal-contacts {
-    flex-shrink: 0;
-    padding: 1rem;
-    border-top: 1px solid rgba(0, 255, 255, 0.2);
+    display: flex;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--neon-cyan);
+    flex-wrap: wrap;
+}
+
+.contact-button {
+    padding: 0.6rem;
+    background: rgba(0, 255, 255, 0.05);
+    border: 1px solid var(--neon-cyan);
+    border-radius: 3px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    flex-grow: 1;
+    justify-content: center;
+    text-align: center;
+    min-width: 120px;
+}
+
+.contact-button:hover {
+    background: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 10px var(--neon-cyan);
+    transform: translateY(-2px);
+}
+
+.terminal-close {
+    background: transparent;
+    border: none;
+    color: var(--neon-pink);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 0.3rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+}
+
+.terminal-close:hover {
+    color: var(--neon-cyan);
+    transform: rotate(90deg);
+    text-shadow: 0 0 10px var(--neon-cyan);
+    background: rgba(255, 0, 255, 0.1);
 }
 
 .loading-bar {
     width: 100%;
-    height: 20px;
+    height: 3px;
     background: rgba(0, 255, 255, 0.1);
-    border-radius: 3px;
-    margin: 1rem 0;
+    margin: 0.5rem 0;
     overflow: hidden;
-    border: 1px solid var(--neon-cyan);
 }
 
 .loading-progress {
     height: 100%;
     width: 0;
-    background: linear-gradient(90deg, 
-        rgba(0, 255, 255, 0.2), 
-        var(--neon-cyan), 
-        rgba(0, 255, 255, 0.2));
+    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
     transition: width 0.3s ease;
 }
 
-/* ===== BOTÃO CYBER ===== */
 .cyber-button {
     padding: 1rem 2rem;
     background: transparent;
@@ -431,7 +493,6 @@ body::before {
     box-shadow: 0 0 15px var(--neon-cyan);
 }
 
-/* ===== RODAPÉ ===== */
 .footer {
     padding: 2rem;
     background: var(--darker-bg);
@@ -452,7 +513,6 @@ body::before {
     justify-content: center;
 }
 
-/* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
     .nav-links {
         gap: 1rem;
@@ -479,6 +539,14 @@ body::before {
         max-width: 300px;
         font-size: 0.9rem;
         padding: 1rem;
+    }
+
+    .terminal-contacts {
+        flex-direction: column;
+    }
+
+    .contact-button {
+        width: 100%;
     }
 }
 

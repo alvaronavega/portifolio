@@ -38,8 +38,11 @@ class CyberTerminal {
         };
 
         this.initMessages = [
-            {text: "> Sistema de Contato Iniciado", delay: 20},
-            {text: "> Carregando dados...", delay: 15},
+            {text: "> SISTEMA DE CONTATO v2.4.1 INICIADO", delay: 30},
+            {text: "> CARREGANDO DADOS DO USUÁRIO...", delay: 25},
+            {text: "> VERIFICANDO CREDENCIAIS...", delay: 20},
+            {text: "> CONECTANDO À REDE...", delay: 15},
+            {text: "> ESTABELECENDO CONEXÃO SEGURA...", delay: 10},
         ];
 
         this.init();
@@ -236,7 +239,8 @@ class CyberTerminal {
         this.output.appendChild(loadingContainer);
         
         await this.animateLoadingBar(loadingProgress);
-        await this.typeText("> Dados carregados com sucesso!", 10);
+        await this.typeText("> CONEXÃO ESTABELECIDA COM SUCESSO", 10);
+        await this.typeText("> CARREGANDO DADOS DE CONTATO...", 8);
     }
 
     animateLoadingBar(progressBar) {
@@ -258,35 +262,36 @@ class CyberTerminal {
     async showContactSheet() {
         this.clearTerminal();
         
-        const contactSheet = document.createElement('div');
-        contactSheet.className = 'contact-sheet';
+        await this.typeText("> DADOS DE CONTATO DISPONÍVEIS:", 10);
+        await this.typeText("> ----------------------------", 10);
         
-        Object.values(this.contacts).forEach(contact => {
-            const contactItem = document.createElement('div');
-            contactItem.className = 'contact-item';
-            
-            const label = document.createElement('div');
-            label.className = 'contact-label';
-            label.textContent = contact.label + ":";
-            
-            const value = document.createElement('div');
-            value.className = 'contact-value';
-            value.textContent = contact.value;
-            
-            contactItem.appendChild(label);
-            contactItem.appendChild(value);
-            contactSheet.appendChild(contactItem);
-        });
+        const contactData = [
+            "NOME: Alvaro Navega",
+            "CARGO: QA Specialist",
+            "EMAIL: alvaronavegawork@gmail.com",
+            "LINKEDIN: linkedin.com/in/alvaronavega",
+            "GITHUB: github.com/alvaronavega",
+            "WHATSAPP: +55 46 98807-8385"
+        ];
+
+        for (const line of contactData) {
+            await this.typeText(line, 8);
+        }
+
+        await this.typeText("> ----------------------------", 10);
+        await this.typeText("> SELECIONE UM MÉTODO DE CONTATO:", 10);
         
-        this.output.appendChild(contactSheet);
-        
-        const buttonsContainer = document.createElement('div');
-        buttonsContainer.className = 'contact-buttons';
+        this.createContactButtons();
+    }
+
+    createContactButtons() {
+        this.contactsContainer.innerHTML = '';
         
         Object.entries(this.contacts).forEach(([key, contact]) => {
             const button = document.createElement('div');
             button.className = 'contact-button';
             button.innerHTML = `<i class="${contact.icon}"></i> ${contact.label}`;
+            
             button.addEventListener('click', () => {
                 button.style.transform = 'scale(0.95)';
                 setTimeout(() => {
@@ -294,11 +299,9 @@ class CyberTerminal {
                     contact.action();
                 }, 200);
             });
-            buttonsContainer.appendChild(button);
+            
+            this.contactsContainer.appendChild(button);
         });
-        
-        this.contactsContainer.appendChild(buttonsContainer);
-        this.output.scrollTop = 0;
     }
 
     clearTerminal() {
